@@ -165,6 +165,36 @@ npm run build # 或 node build.mjs
 
 ---
 
+## 👁 无视觉模型时：`screen-vision` skill（千问视觉识别）
+
+> 当前模型不支持图片输入时，`computer_screenshot` 会报
+> `requires an image-capable model`（插件故意的模型能力 guard）。
+> 此时插件无法"看图"，但可以借助本仓库自带的 **screen-vision** skill
+> 用千问 **Qwen-VL** 多模态模型识别屏幕，继续完成 UI 自动化闭环。
+
+### 怎么触发（短句即可，无需长提示词）
+
+```text
+用 screen-vision 看下屏幕
+截图识别一下，然后点搜索框输入 xxx
+```
+
+Agent 会自动：截图 → 调 Qwen-VL 识别 → 拿到界面描述与元素坐标 →
+按坐标执行 `computer_click` / `computer_type` / `computer_scroll` → 再截图验证。
+
+### 配置（一次性）
+
+1. 在 `vision.config.json` 里选模型（默认 `qwen-vl-max`，可换 `qwen-vl-plus` / `qwen3-vl-flash`）；
+2. 把 DashScope API Key 存入 DSH 凭据库（**不要**写进配置文件 / 聊天 / 提交 git）：
+
+```bash
+echo "DASHSCOPE_API_KEY: sk-你的key" >> ~/.dsh/.credentials.yaml
+```
+
+> `vision.config.json` 已加入 `.gitignore`，不会进版本库。
+
+---
+
 ## 🧩 工作原理
 
 ```
@@ -195,6 +225,10 @@ computer-use-dsh/
 ├── README.md               # 本文档
 ├── package.json
 ├── build.mjs               # 把 native/ 源码内嵌进 src/host.js，产出 dist/
+├── vision.config.json      # screen-vision 配置（模型/endpoint；key 不在此处，已 gitignore）
+├── .dsh/skills/
+│   └── screen-vision/
+│       └── SKILL.md        # 千问视觉识别 skill（截图→Qwen-VL→坐标→computer_* 闭环）
 ├── src/
 │   ├── host.js             # Host 半部（平台探测 + 工具 + RPC，含 __*_SOURCE__ 占位符）
 │   └── client.js           # Client 半部（实时屏幕面板）

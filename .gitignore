@@ -1,0 +1,7 @@
+# Local configuration — may contain secrets, never commit
+vision.config.json
+
+# DSH session/runtime artifacts
+.dsh/sessions/
+.dsh/storages/
+*.zstd
