@@ -113,6 +113,13 @@ npm run build # 或 node build.mjs
 
 ### 4. 安装插件（二选一）
 
+> **前置条件：必须使用 `cordis` agent preset 的会话。** `cordis_define` / `cordis_run`
+> 只暴露给运行在 **cordis** agent preset 上的会话（标准编码 agent + 自引用 Cordis 工具集；
+> 默认的 standard / code preset 会话看不到这组工具）。会话的 agent preset 在**创建时固定、
+> 运行中不可切换**（宿主拒绝 `agent-preset-locked`），因此请先新建一个 `cordis` 会话
+> （新建会话界面的 agent preset 选择 chip，或先在 General 设置里把默认 preset 改为 `cordis`），
+> 再继续下面的步骤。
+
 #### 方式 A：让 DSH 智能体加载（推荐）
 
 把 `dist/plugin.json` 的内容（或直接指向这两个文件）交给 DSH 会话中的智能体，并说：
@@ -134,6 +141,11 @@ npm run build # 或 node build.mjs
 > 提示：插件会把原生 helper 写入临时目录缓存（macOS `/tmp/dsh-computer-use`，
 > Windows `%TEMP%\dsh-computer-use`）；DSH 进程重启后重新运行一次插件即可，
 > helper 无需重新编译。
+>
+> 动态插件实例归**定义它的那个会话**所有（只存在于共享宿主进程内存）：同一进程的其他
+> 会话能看到它注册的 `computer_*` 工具，但不能对它 `cordis_stop` / `cordis_undefine`。
+> 如需重复安装 / 全新安装测试，请先在**原会话**清理旧实例（`cordis_stop` + `cordis_undefine`），
+> 或直接重启 DSH 进程，避免同名工具与运行中的旧实例重复注册。
 
 ---
 
