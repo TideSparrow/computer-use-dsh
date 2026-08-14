@@ -1,6 +1,6 @@
 // macos-helper.swift — macOS input helper for the Computer Use DSH plugin.
 // Compiled once with `swiftc -O` on first use and cached by the Host half.
-// Subcommands: move / click / scroll / type / key / screensize / trusted
+// Subcommands: move / click / scroll / type / key / size / screensize / trusted
 import CoreGraphics
 import Foundation
 import ApplicationServices
@@ -112,6 +112,8 @@ case "key":
     let modifiers = args.count > 3 ? Array(args[3].split(separator: ",")).map(String.init) : []
     keyPress(args[2], modifiers: modifiers)
 case "screensize":
+    fallthrough
+case "size":
     let b = CGDisplayBounds(CGMainDisplayID())
     print(String(Int(b.width)) + " " + String(Int(b.height)))
 case "trusted":
