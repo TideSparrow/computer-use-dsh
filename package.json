@@ -1,7 +1,7 @@
 {
   "name": "computer-use-dsh",
   "version": "1.0.0",
-  "description": "Codex-style computer use plugin for DeepSeek Harness (DSH): screenshot, mouse, keyboard, scroll and open apps on macOS / Linux / Windows.",
+  "description": "Codex-style computer use plugin for DeepSeek Harness (DSH): screenshot, mouse, keyboard, scroll and open apps on macOS / Linux / Windows. 类似 Codex computer use 的 DeepSeek Harness 桌面自动化插件，支持 macOS / Linux / Windows。",
   "type": "module",
   "license": "MIT",
   "files": [
@@ -16,11 +16,28 @@
     "check": "node build.mjs && node --check dist/plugin.host.js && node --check dist/plugin.client.js"
   },
   "keywords": [
+    "computer-use",
+    "computer-use-agent",
+    "deepseek",
     "deepseek-harness",
     "dsh",
     "cordis",
-    "computer-use",
+    "ai-agent",
+    "llm-agent",
     "agent",
-    "desktop-automation"
+    "desktop-automation",
+    "gui-automation",
+    "automation",
+    "screenshot",
+    "macos",
+    "linux",
+    "windows",
+    "cross-platform",
+    "xdotool",
+    "powershell",
+    "swift",
+    "cgEvent",
+    "plugin",
+    "deepseek-r1"
   ]
 }

@@ -1,9 +1,24 @@
-# Computer Use for DSH
+<div align="center">
+
+# 🖥 Computer Use for DSH
+
+**类似 OpenAI Codex computer use 的桌面自动化插件 · DeepSeek Harness Desktop Automation Agent Plugin**
+
+[![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+[![Platform: macOS](https://img.shields.io/badge/platform-macOS-black?logo=apple)](https://github.com/TideSparrow/computer-use-dsh)
+[![Platform: Linux](https://img.shields.io/badge/platform-Linux-yellow?logo=linux)](https://github.com/TideSparrow/computer-use-dsh)
+[![Platform: Windows](https://img.shields.io/badge/platform-Windows-0078D6?logo=windows)](https://github.com/TideSparrow/computer-use-dsh)
+[![DSH](https://img.shields.io/badge/DeepSeek%20Harness-plugin-8A2BE2)](https://github.com/deepseek-ai/DeepSeek-Harness)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/TideSparrow/computer-use-dsh/pulls)
+
+</div>
 
 一个类似 **OpenAI Codex computer use** 的桌面自动化插件，让运行在
-[DeepSeek Harness](https://github.com/deepseek-ai/DeepSeek-Harness)（DSH）中的智能体
+[DeepSeek Harness](https://github.com/deepseek-ai/DeepSeek-Harness)（DSH）中的 AI Agent / LLM Agent
 能够**截屏看屏幕 → 移动鼠标 / 点击 / 滚动 → 键入文本 / 按键 → 打开应用**，
 在 **macOS / Linux / Windows** 三端实现真正的 "computer use" 循环。
+
+> **Keywords**: computer use · computer-use agent · deepseek harness · dsh · cordis · desktop automation · gui automation · screenshot · mouse control · xdotool · CGEvent · PowerShell · cross-platform
 
 - **零第三方运行时依赖（Windows / macOS）**：Windows 用系统自带 PowerShell + .NET，
   macOS 用系统自带 `screencapture` + 一段首次使用时用 `swiftc` 编译的 CGEvent helper。
@@ -194,4 +209,16 @@ computer-use-dsh/
 
 ## 📄 License
 
-MIT — 自由使用、修改、分发，欢迎 PR。
+[MIT](./LICENSE) — 自由使用、修改、分发。
+
+---
+
+## ⭐ 支持项目
+
+觉得有用的话，欢迎给个 Star ⭐ —— 你的支持是我持续维护的动力！
+
+<div align="center">
+
+**[⬆ 返回顶部](#computer-use-for-dsh) · [GitHub 仓库](https://github.com/TideSparrow/computer-use-dsh)**
+
+</div>
