@@ -122,3 +122,11 @@ default:
     FileHandle.standardError.write(("unknown command " + cmd).data(using: .utf8)!)
     exit(2)
 }
+
+// Posted CGEvents are dispatched asynchronously. This helper is short-lived and
+// exits right after posting, so keystrokes from `type` / `key` were discarded
+// before the window server delivered them (mouse commands survived only because
+// clickAt() already sleeps between its events). Keep the process alive briefly
+// so posted events can be flushed. Verified on macOS 27 / Apple Silicon:
+// without any grace 0/2 key events arrived, with 250 ms 2/2 arrived.
+usleep(250_000)
